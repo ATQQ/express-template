@@ -1,0 +1,26 @@
+{
+  "name": "node-template",
+  "version": "1.0.0",
+  "description": "node.js 进行Web开发模板",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ATQQ/node-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ATQQ/node-template/issues"
+  },
+  "homepage": "https://github.com/ATQQ/node-template#readme",
+  "dependencies": {
+    "koa": "^2.8.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
+  }
+}
