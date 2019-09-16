@@ -1,11 +1,10 @@
 const { APIError } = require("../rest");
+const userService=require("../service/userService");
 
-const fn_testGet = async (ctx, next) => {
-    ctx.rest({
-        code: 200,
-        data: "test"
-    })
+const fn_addUser = async (ctx, next) => {
+    const {token}=ctx.request.body;
+    await userService.addUserToken(token);
 }
 module.exports = {
-    "GET /api/user/test": fn_testGet
+    "POST /api/user/add": fn_addUser
 }
