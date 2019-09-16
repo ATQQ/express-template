@@ -3,10 +3,6 @@ const config = require('./config'),
     
 console.log('init Sequelize');
 
-// const generateId = () => {
-//     return Date.now().toString().substring(5);
-// }
-
 let sequelize = new Sequelize(config.database,
     config.username,
     config.password,
@@ -21,7 +17,6 @@ let sequelize = new Sequelize(config.database,
     }
 )
 
-const ID_TYPE = Sequelize.STRING(50);
 
 // 自动化构建Model
 const defineModel = (name, attributes) => {
@@ -45,11 +40,6 @@ const defineModel = (name, attributes) => {
             }
         }
     }
-
-    // attrs.id = {
-    //     type: ID_TYPE,
-    //     primaryKey: true
-    // }
 
     attrs.create_date = {
         type: Sequelize.BIGINT,
@@ -75,9 +65,6 @@ const defineModel = (name, attributes) => {
                 let now = Date.now();
                 if (obj.isNewRecord) {
                     console.log(`will create entity... ${obj}`)
-                    // if (!obj.id) {
-                    //     obj.id = generateId();
-                    // }
                     obj.create_date = now;
                     obj.update_date = now;
                     obj.update_times = 0;

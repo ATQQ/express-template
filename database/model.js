@@ -1,7 +1,7 @@
 const fs = require('fs'),
     db = require("./db");
 
-const modelBasePath =`${__dirname}/../model`;
+const modelBasePath =`${__dirname}/../app/model`;
 // 获取文件名数组
 let files = fs.readdirSync(modelBasePath,"utf8");
 

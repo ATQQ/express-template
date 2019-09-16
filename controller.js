@@ -75,7 +75,7 @@ const addControllers = (router, dir) => {
  * @param {String} dir controllers目录
  */
 module.exports = (dir) => {
-    let controllers_dir = dir || '/controller',
+    let controllers_dir = dir || '/app/controller',
         router = require('koa-router')();
     addControllers(router, controllers_dir);
     return router.routes();
