@@ -1,8 +1,9 @@
-const config = require('./config'),
+const config = require('./config'),//数据库皮配置文件
     Sequelize = require("sequelize");
     
 console.log('init Sequelize');
 
+// 创建数据库链接
 let sequelize = new Sequelize(config.database,
     config.username,
     config.password,
@@ -41,6 +42,7 @@ const defineModel = (name, attributes) => {
         }
     }
 
+    // 时间戳字段
     attrs.create_date = {
         type: Sequelize.BIGINT,
         allowNull: false
@@ -57,10 +59,12 @@ const defineModel = (name, attributes) => {
     }
 
 
+    // 定义model的通用函数
     return sequelize.define(name, attrs, {
         tableName: name,
         timestamps: false,
         hooks: {
+            // 在数据变化更新之前处理数据的钩子
             beforeValidate: function (obj) {
                 let now = Date.now();
                 if (obj.isNewRecord) {
@@ -95,9 +99,5 @@ let exp = {
 for (const type of TYPES) {
     exp[type] = Sequelize[type];
 }
-
-
-// exp.ID = ID_TYPE;
-// exp.generateId = generateId;
 
 module.exports = exp;

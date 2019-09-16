@@ -21,6 +21,7 @@ const addMapping = (router, mapping) => {
     // 扫描导出的url
     for (const url of Object.keys(mapping)) {
         let path = '';
+        // 在koa-router中注册对应的请求
         switch (judgeRequestMethod(url)) {
             case 'GET':
                 path = url.substring(4);
@@ -50,7 +51,7 @@ const addMapping = (router, mapping) => {
 }
 
 /**
- * 导入controllers
+ * 自动导入controllers中所有的controller
  * @param {koa-router} router koa-router
  * @param {String} dir  controllers目录
  */
@@ -62,11 +63,12 @@ const addControllers = (router, dir) => {
     let js_files = files.filter(v => {
         return v.endsWith('.js');
     })
-
+    // 遍历过滤的文件列表
     for (const file of js_files) {
         console.log(`controllers process ${file}...`);
-        // 导入js文件
+        // 引入对应的controller文件中的mapping
         let mapping = require(__dirname + dir + '/' + file)
+        // 自动注册url-mapping
         addMapping(router, mapping);
     }
 }

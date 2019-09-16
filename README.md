@@ -1,2 +1,3 @@
 # node-template
-node.js 进行Web开发模板
+node.js + koa2 + Sequelize + mysql Web-Restful开发模板项目
+

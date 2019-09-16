@@ -1,10 +1,11 @@
 const fs = require('fs');
-const defaultConfig = './config-default.js';
-const overrideConfig = './config-override.js';
-const testConfig = './config-test.js';
+// 数据库配置文件
+const defaultConfig = './config-default.js';//默认配置
+const overrideConfig = './config-override.js';//生产环境配置
+const testConfig = './config-test.js';//测试环境配置
 
 let config = null;
-
+// 设置当前环境
 process.env.NODE_ENV="test";
 
 // 判断当前环境
