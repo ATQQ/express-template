@@ -1,6 +1,7 @@
 const dotenv = require('dotenv')
 const express = require('express')
 const bodyParser = require('body-parser')
+const mainRouter = require('./routes')
 
 // 读取-打印环境变量
 // 读取.env环境变量配置文件
@@ -20,47 +21,8 @@ app.route('*').all((req, res, next) => {
     console.log(req.url);
     next()
 })
-
-
-app.post('/path1/path2/:id', (req, res) => {
-    console.log(req.params);
-    console.log(req.query);
-    console.log(req.body);
-    res.send({
-        code: 0,
-        errMsg: 'success'
-    })
-})
-
-app.get('/path1/path2/:id', (req, res) => {
-    console.log(req.params);
-    console.log(req.query);
-    console.log(req.body);
-    res.send({
-        code: 0,
-        errMsg: 'success'
-    })
-})
-
-app.delete('/path1/path2/:id', (req, res) => {
-    console.log(req.params);
-    console.log(req.query);
-    console.log(req.body);
-    res.send({
-        code: 0,
-        errMsg: 'success'
-    })
-})
-
-app.put('/path1/path2/:id', (req, res) => {
-    console.log(req.params);
-    console.log(req.query);
-    console.log(req.body);
-    res.send({
-        code: 0,
-        errMsg: 'success'
-    })
-})
+// 注册所有路由
+app.use(mainRouter)
 
 app.listen(serverConfig.port, serverConfig.hostname, () => {
     console.log(`server start at ${serverConfig.hostname}:${serverConfig.port}`);
