@@ -1,6 +1,9 @@
+const { findUserData } = require('../../db/modules/userDb');
+
 const router = require('express').Router()
 
 router.post('/path2/:id', (req, res) => {
+    findUserData()
     console.log(req.params);
     console.log(req.query);
     console.log(req.body);

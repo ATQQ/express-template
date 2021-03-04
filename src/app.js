@@ -1,11 +1,12 @@
 const dotenv = require('dotenv')
+console.log(dotenv.config());
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const mainRouter = require('./routes')
 
 // 读取-打印环境变量
 // 读取.env环境变量配置文件
-console.log(dotenv.config());
 
 const { serverConfig } = require('./config')
 
