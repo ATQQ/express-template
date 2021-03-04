@@ -1,5 +1,6 @@
 const dotenv = require('dotenv')
 
+console.log('环境变量')
 console.log(dotenv.config())
 
 const express = require('express')
@@ -20,7 +21,7 @@ app.use(bodyParser.json({ strict: true }))
 
 // 首先进入的路由
 app.route('*').all((req, res, next) => {
-  console.log(req.url)
+  console.log(`${req.method}--${req.url}`)
   next()
 })
 // 注册所有路由
