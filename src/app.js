@@ -1,5 +1,6 @@
 const dotenv = require('dotenv')
-console.log(dotenv.config());
+
+console.log(dotenv.config())
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -19,12 +20,12 @@ app.use(bodyParser.json({ strict: true }))
 
 // 首先进入的路由
 app.route('*').all((req, res, next) => {
-    console.log(req.url);
-    next()
+  console.log(req.url)
+  next()
 })
 // 注册所有路由
 app.use(mainRouter)
 
 app.listen(serverConfig.port, serverConfig.hostname, () => {
-    console.log(`server start at ${serverConfig.hostname}:${serverConfig.port}`);
+  console.log(`server start at ${serverConfig.hostname}:${serverConfig.port}`)
 })
