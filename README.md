@@ -1,3 +1,3 @@
-# node-template
-node.js + koa2 + Sequelize + mysql Web-Restful开发模板项目
+# express-template
+express + mongodb Web-Restful开发模板项目
 
