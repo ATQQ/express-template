@@ -1,14 +1,11 @@
-const { getDBConnection } = require('../mongodb')
+const { query } = require('../mongodb')
 
-function findUserData() {
-  getDBConnection().then(({ db, Db }) => {
-    Db.collection('user').find().toArray().then((data) => {
-      console.log(data)
-      db.close()
-    })
+function findUser() {
+  return query((db, resolve) => {
+    db.collection('user').find().toArray().then(resolve)
   })
 }
 
 module.exports = {
-  findUserData,
+  findUser,
 }

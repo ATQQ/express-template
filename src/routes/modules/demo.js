@@ -1,19 +1,27 @@
 const router = require('express').Router()
 
-const { findUserData } = require('../../db/modules/userDb')
+const { findUser } = require('../../db/modules/userDb')
 
-router.post('/path2/:id', (req, res) => {
-  findUserData()
-  console.log(req.params)
-  console.log(req.query)
-  console.log(req.body)
-  res.send({
-    code: 0,
-    errMsg: 'success',
+router.post('/path2/:id', async (req, res) => {
+  // Promise
+  findUser().then((data) => {
+    console.log(data)
+
+    console.log(req.params)
+    console.log(req.query)
+    console.log(req.body)
+    res.send({
+      code: 0,
+      errMsg: 'success',
+    })
   })
 })
 
-router.get('/path2/:id', (req, res) => {
+router.get('/path2/:id', async (req, res) => {
+  // async await
+  const data = await findUser()
+  console.log(data)
+
   console.log(req.params)
   console.log(req.query)
   console.log(req.body)

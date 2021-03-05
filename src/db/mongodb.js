@@ -22,6 +22,22 @@ function getDBConnection() {
   })
 }
 
+function query(callback) {
+  const p = new Promise((resolve, rej) => {
+    getDBConnection().then(({ db, Db }) => {
+      // 执行回调
+      callback(Db, resolve)
+      // resolve后关闭
+      p.catch((e) => rej(e))
+        .finally(() => {
+          db.close()
+        })
+    })
+  })
+  return p
+}
+
 module.exports = {
   getDBConnection,
+  query,
 }
