@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon ./src/app.js",
     "start": "node ./src/app.js",
-    "lint": "eslint src --fix"
+    "lint": "eslint src --fix",
+    "test": "jest _tests_"
   },
   "repository": {
     "type": "git",
@@ -20,9 +21,11 @@
   },
   "homepage": "https://github.com/ATQQ/express-template#readme",
   "devDependencies": {
+    "@types/jest": "^26.0.20",
     "eslint": "^7.21.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.7"
   },
   "dependencies": {

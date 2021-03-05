@@ -14,4 +14,4 @@ module.exports = {
     'no-console': 'off',
     semi: ['error', 'never'],
   },
-};
+}
