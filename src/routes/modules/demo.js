@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const { findUser } = require('../../db/modules/userDb')
+const { findUser, selectUserByUsername } = require('../../db/modules/userDb')
 
 router.post('/path2/:id', async (req, res) => {
   // Promise
@@ -32,16 +32,21 @@ router.get('/path2/:id', async (req, res) => {
 })
 
 router.delete('/path2/:id', (req, res) => {
-  console.log(req.params)
-  console.log(req.query)
-  console.log(req.body)
-  res.send({
-    code: 0,
-    errMsg: 'success',
+  selectUserByUsername('admin').then((data) => {
+    console.log(data)
+    console.log(req.params)
+    console.log(req.query)
+    console.log(req.body)
+    res.send({
+      code: 0,
+      errMsg: 'success',
+    })
   })
 })
 
-router.put('/path2/:id', (req, res) => {
+router.put('/path2/:id', async (req, res) => {
+  const data = await selectUserByUsername('admin')
+  console.log(data)
   console.log(req.params)
   console.log(req.query)
   console.log(req.body)

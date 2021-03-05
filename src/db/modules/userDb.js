@@ -1,11 +1,18 @@
-const { query } = require('../mongodb')
+const { query: mongodbQuery } = require('../mongodb')
+const { query: mysqlQuery } = require('../mysql')
 
 function findUser() {
-  return query((db, resolve) => {
+  return mongodbQuery((db, resolve) => {
     db.collection('user').find().toArray().then(resolve)
   })
 }
 
+function selectUserByUsername(username) {
+  const sql = 'select * from user where username = ?'
+  return mysqlQuery(sql, username)
+}
+
 module.exports = {
   findUser,
+  selectUserByUsername,
 }

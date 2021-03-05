@@ -1,5 +1,5 @@
 # express-template
-express + mongodb Web-Restful开发模板项目
+express + mongodb/mysql Web-Restful开发模板项目
 
 ## 使用
 >如果没有yarn,请先[安装](#yarn简单使用)
