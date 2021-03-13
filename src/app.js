@@ -4,7 +4,6 @@ console.log('环境变量')
 console.log(dotenv.config())
 
 const express = require('express')
-const bodyParser = require('body-parser')
 const mainRouter = require('./routes')
 
 // 读取-打印环境变量
@@ -16,8 +15,8 @@ const { serverConfig } = require('./config')
 const app = express()
 
 // 注册一些中间件
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json({ strict: true }))
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json({ strict: true }))
 
 // 首先进入的路由
 app.route('*').all((req, res, next) => {
